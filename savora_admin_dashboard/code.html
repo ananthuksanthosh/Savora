@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Savora Admin Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-fixed-dim": "#ffb77b",
+                      "surface-dim": "#131313",
+                      "inverse-surface": "#e5e2e1",
+                      "on-error-container": "#ffdad6",
+                      "on-primary-fixed": "#261a00",
+                      "tertiary-fixed": "#e5e2e1",
+                      "primary-fixed-dim": "#fbbc00",
+                      "on-secondary": "#4d2700",
+                      "on-primary-container": "#6d5000",
+                      "surface-tint": "#fbbc00",
+                      "surface": "#131313",
+                      "on-error": "#690005",
+                      "inverse-on-surface": "#313030",
+                      "on-surface-variant": "#d4c5ab",
+                      "error": "#ffb4ab",
+                      "error-container": "#93000a",
+                      "surface-bright": "#393939",
+                      "on-secondary-fixed-variant": "#6d3a00",
+                      "surface-container-highest": "#353534",
+                      "on-tertiary-fixed": "#1c1b1b",
+                      "inverse-primary": "#795900",
+                      "surface-container-high": "#2a2a2a",
+                      "on-primary": "#402d00",
+                      "tertiary-container": "#cbc9c8",
+                      "surface-container-low": "#1c1b1b",
+                      "outline-variant": "#504532",
+                      "outline": "#9c8f78",
+                      "tertiary": "#e8e5e4",
+                      "on-tertiary": "#313030",
+                      "primary-container": "#ffbf00",
+                      "surface-container": "#201f1f",
+                      "on-surface": "#e5e2e1",
+                      "on-tertiary-fixed-variant": "#474746",
+                      "on-background": "#e5e2e1",
+                      "surface-container-lowest": "#0e0e0e",
+                      "primary-fixed": "#ffdfa0",
+                      "tertiary-fixed-dim": "#c8c6c5",
+                      "on-secondary-container": "#ffb270",
+                      "secondary": "#ffb77b",
+                      "on-primary-fixed-variant": "#5c4300",
+                      "background": "#131313",
+                      "primary": "#ffe2ab",
+                      "on-secondary-fixed": "#2e1500",
+                      "surface-variant": "#353534",
+                      "on-tertiary-container": "#555454",
+                      "secondary-container": "#7a4100",
+                      "secondary-fixed": "#ffdcc2"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "32px",
+                      "container-max-width": "1280px",
+                      "section-gap": "120px",
+                      "base": "8px",
+                      "margin-desktop": "80px",
+                      "margin-mobile": "20px"
+              },
+              "fontFamily": {
+                      "headline-md": [
+                              "Playfair Display"
+                      ],
+                      "label-sm": [
+                              "Inter"
+                      ],
+                      "display-lg-mobile": [
+                              "Playfair Display"
+                      ],
+                      "display-lg": [
+                              "Playfair Display"
+                      ],
+                      "headline-lg": [
+                              "Playfair Display"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.1em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg-mobile": [
+                              "40px",
+                              {
+                                      "lineHeight": "48px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "display-lg": [
+                              "64px",
+                              {
+                                      "lineHeight": "72px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(184, 115, 51, 0.2);
+            border-left: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 30px rgba(184, 115, 51, 0.05);
+        }
+        /* Custom scrollbar for a cleaner look */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(184, 115, 51, 0.2);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface flex min-h-screen font-body-md relative overflow-hidden">
+<!-- Ambient Background Glow -->
+<div class="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+<div class="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] rounded-full bg-secondary-container/10 blur-[120px]"></div>
+<div class="absolute bottom-[-20%] right-[-10%] w-[40%] h-[40%] rounded-full bg-primary-container/10 blur-[120px]"></div>
+</div>
+<!-- SideNavBar Component -->
+<nav class="h-screen w-64 fixed left-0 top-0 bg-surface-container border-r border-secondary/10 flex flex-col p-6 space-y-4 z-20">
+<!-- Brand -->
+<div class="mb-8">
+<span class="font-headline-md text-headline-md text-primary tracking-widest italic">Savora</span>
+</div>
+<!-- Profile Header -->
+<div class="flex items-center gap-4 mb-8 p-2">
+<div class="w-12 h-12 rounded-full overflow-hidden border border-secondary/30">
+<img alt="Customer Profile Picture" class="w-full h-full object-cover" data-alt="A professional headshot of a confident female restaurant manager in a softly lit, high-end dining environment. The lighting is warm and cinematic, reflecting a sophisticated dark-mode aesthetic with subtle amber highlights on her face. She wears a tailored charcoal blazer." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHeNyTpEMfBwNevZ6AfvYAcjEL1LRwenR9CWNBWkV17IEKrsK2QbgO0THDqLs-4CyS28oUWUgnZncmPWgnq5d4PdWg741wAn50Eie0QsfkpT0PJM8vtfHTs22ShtShX2jlo9nsp80Yj-tlPfoaLwgQzSu9nHO_ttUQkb5s_vgHaqYx4VcBNM2Eh5TfvghmmCplBi9UOIYaXTKlZbxZxJ1DvErBCnh8Uug7vXRCxJKhCOOTuGka7XwydETc6cGVVvM4rf-KhT4YJ3gV"/>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase">Welcome back,</p>
+<p class="font-headline-md text-headline-md text-on-surface mt-1">Julianne</p>
+</div>
+</div>
+<!-- Navigation Links -->
+<div class="flex-1 space-y-2">
+<!-- Active Tab: Overview -->
+<a class="flex items-center gap-4 px-4 py-3 bg-secondary-container text-on-secondary-container rounded-lg font-bold group" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span>Overview</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-bright transition-all rounded-lg group" href="#">
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">event_seat</span>
+<span>Reservations</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-bright transition-all rounded-lg group" href="#">
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">receipt_long</span>
+<span>Orders</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-bright transition-all rounded-lg group" href="#">
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">settings_heart</span>
+<span>Preferences</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-bright transition-all rounded-lg group" href="#">
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">help_outline</span>
+<span>Support</span>
+</a>
+</div>
+<!-- CTA -->
+<button class="mt-auto w-full py-3 bg-primary text-on-primary-fixed font-label-sm text-label-sm uppercase tracking-widest rounded hover:bg-primary-fixed transition-colors">
+            New Reservation
+        </button>
+</nav>
+<!-- Main Canvas -->
+<main class="ml-64 w-full h-screen overflow-y-auto p-10 relative z-10">
+<div class="max-w-[1400px] mx-auto space-y-8">
+<!-- Dashboard Header -->
+<header class="flex justify-between items-end mb-12">
+<div>
+<h1 class="font-display-lg text-display-lg text-on-surface leading-none mb-2">Overview</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Thursday, October 24th, 2024</p>
+</div>
+<div class="flex gap-4">
+<button class="w-12 h-12 rounded-full glass-panel flex items-center justify-center text-secondary hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="w-12 h-12 rounded-full glass-panel flex items-center justify-center text-secondary hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined">search</span>
+</button>
+</div>
+</header>
+<!-- Top Metrics Bento Grid -->
+<div class="grid grid-cols-3 gap-6">
+<!-- Metric 1 -->
+<div class="glass-panel rounded-xl p-6 flex flex-col justify-between h-40 group hover:shadow-[0_8px_30px_rgba(184,115,51,0.15)] transition-shadow">
+<div class="flex justify-between items-start">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Daily Revenue</span>
+<span class="material-symbols-outlined text-secondary">trending_up</span>
+</div>
+<div>
+<span class="font-headline-lg text-headline-lg text-primary">$12,450</span>
+<p class="font-body-md text-body-md text-secondary text-sm mt-1">+14% vs yesterday</p>
+</div>
+</div>
+<!-- Metric 2 -->
+<div class="glass-panel rounded-xl p-6 flex flex-col justify-between h-40 group hover:shadow-[0_8px_30px_rgba(184,115,51,0.15)] transition-shadow">
+<div class="flex justify-between items-start">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Covers Tonight</span>
+<span class="material-symbols-outlined text-secondary">group</span>
+</div>
+<div>
+<span class="font-headline-lg text-headline-lg text-primary">142</span>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm mt-1">98% capacity</p>
+</div>
+</div>
+<!-- Metric 3 -->
+<div class="glass-panel rounded-xl p-6 flex flex-col justify-between h-40 group hover:shadow-[0_8px_30px_rgba(184,115,51,0.15)] transition-shadow">
+<div class="flex justify-between items-start">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Avg. Spend / Cover</span>
+<span class="material-symbols-outlined text-secondary">restaurant</span>
+</div>
+<div>
+<span class="font-headline-lg text-headline-lg text-primary">$185</span>
+<p class="font-body-md text-body-md text-secondary text-sm mt-1">+5% vs last week</p>
+</div>
+</div>
+</div>
+<!-- Revenue Chart Section (Abstract Representation) -->
+<div class="glass-panel rounded-xl p-8 h-96 flex flex-col relative overflow-hidden group">
+<div class="flex justify-between items-center mb-6 z-10 relative">
+<h2 class="font-headline-md text-headline-md text-on-surface">Revenue Velocity</h2>
+<select class="bg-transparent border-b border-secondary/30 text-on-surface font-label-sm text-label-sm focus:ring-0 pb-1 cursor-pointer">
+<option class="bg-surface">This Week</option>
+<option class="bg-surface">This Month</option>
+</select>
+</div>
+<!-- Abstract Chart Visualization using CSS/SVG patterns -->
+<div class="absolute inset-0 top-20 flex items-end px-8 pb-8 gap-4 opacity-80 z-0">
+<div class="w-full bg-gradient-to-t from-secondary-container to-transparent h-[40%] rounded-t-sm transition-all duration-700 ease-out group-hover:h-[45%]"></div>
+<div class="w-full bg-gradient-to-t from-secondary to-transparent h-[60%] rounded-t-sm transition-all duration-700 ease-out group-hover:h-[65%]"></div>
+<div class="w-full bg-gradient-to-t from-primary-container to-transparent h-[30%] rounded-t-sm transition-all duration-700 ease-out group-hover:h-[35%]"></div>
+<div class="w-full bg-gradient-to-t from-secondary to-transparent h-[80%] rounded-t-sm transition-all duration-700 ease-out group-hover:h-[85%]"></div>
+<div class="w-full bg-gradient-to-t from-primary to-transparent h-[100%] rounded-t-sm transition-all duration-700 ease-out group-hover:h-[95%] shadow-[0_0_20px_rgba(255,191,0,0.2)]"></div>
+<div class="w-full bg-gradient-to-t from-secondary to-transparent h-[70%] rounded-t-sm transition-all duration-700 ease-out group-hover:h-[75%]"></div>
+<div class="w-full bg-gradient-to-t from-secondary-container to-transparent h-[50%] rounded-t-sm transition-all duration-700 ease-out group-hover:h-[55%]"></div>
+</div>
+<!-- X-Axis Labels -->
+<div class="absolute bottom-4 left-8 right-8 flex justify-between font-label-sm text-label-sm text-on-surface-variant z-10">
+<span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+</div>
+</div>
+<!-- Split Section: Reservations & Menu -->
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-8">
+<!-- Reservation Management Table -->
+<div class="xl:col-span-2 glass-panel rounded-xl p-8">
+<div class="flex justify-between items-center mb-6">
+<h2 class="font-headline-md text-headline-md text-on-surface">Upcoming Service</h2>
+<button class="font-label-sm text-label-sm text-secondary hover:text-primary transition-colors flex items-center gap-1 uppercase tracking-widest">
+                            View All <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-secondary/20">
+<th class="py-4 font-label-sm text-label-sm text-on-surface-variant uppercase font-normal">Guest</th>
+<th class="py-4 font-label-sm text-label-sm text-on-surface-variant uppercase font-normal">Time</th>
+<th class="py-4 font-label-sm text-label-sm text-on-surface-variant uppercase font-normal">Table</th>
+<th class="py-4 font-label-sm text-label-sm text-on-surface-variant uppercase font-normal">Status</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md text-on-surface">
+<tr class="border-b border-secondary/10 hover:bg-white/5 transition-colors group cursor-pointer">
+<td class="py-4 flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-headline-md text-sm">E</div>
+<span>Eleanor Vance</span>
+</td>
+<td class="py-4">19:00</td>
+<td class="py-4 text-on-surface-variant">T-12 (Window)</td>
+<td class="py-4">
+<span class="px-3 py-1 bg-secondary-container/20 text-secondary border border-secondary/30 rounded-full font-label-sm text-[10px] uppercase tracking-wider inline-block">Arrived</span>
+</td>
+</tr>
+<tr class="border-b border-secondary/10 hover:bg-white/5 transition-colors group cursor-pointer">
+<td class="py-4 flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-bright text-on-surface flex items-center justify-center font-headline-md text-sm">M</div>
+<span>Marcus Sterling</span>
+<span class="material-symbols-outlined text-primary text-[14px]" title="VIP">star</span>
+</td>
+<td class="py-4">19:30</td>
+<td class="py-4 text-on-surface-variant">T-04 (Chef's Table)</td>
+<td class="py-4">
+<span class="px-3 py-1 bg-surface-bright text-on-surface rounded-full font-label-sm text-[10px] uppercase tracking-wider inline-block">Confirmed</span>
+</td>
+</tr>
+<tr class="border-b border-secondary/10 hover:bg-white/5 transition-colors group cursor-pointer">
+<td class="py-4 flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-bright text-on-surface flex items-center justify-center font-headline-md text-sm">A</div>
+<span>Aria Montgomery</span>
+</td>
+<td class="py-4">20:15</td>
+<td class="py-4 text-on-surface-variant">T-08</td>
+<td class="py-4">
+<span class="px-3 py-1 bg-primary/20 text-primary border border-primary/30 rounded-full font-label-sm text-[10px] uppercase tracking-wider inline-block">Seated</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Menu Editor List -->
+<div class="glass-panel rounded-xl p-8 flex flex-col h-full">
+<div class="flex justify-between items-center mb-6">
+<h2 class="font-headline-md text-headline-md text-on-surface">Menu Highlights</h2>
+<button class="w-8 h-8 rounded-full border border-secondary/30 flex items-center justify-center text-secondary hover:bg-secondary/10 transition-colors">
+<span class="material-symbols-outlined text-[18px]">add</span>
+</button>
+</div>
+<div class="flex-1 space-y-4">
+<!-- Menu Item 1 -->
+<div class="flex items-center gap-4 p-3 rounded-lg hover:bg-white/5 transition-colors border border-transparent hover:border-secondary/20 group">
+<div class="w-16 h-16 rounded overflow-hidden flex-shrink-0">
+<img alt="Scallop Dish" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500" data-alt="A highly detailed, macro shot of a single perfectly seared scallop on a dark slate plate. The lighting is moody and dramatic, focusing on the caramelized golden-brown crust of the scallop, contrasting beautifully with a vibrant green herb oil and a rich, dark reduction sauce. The overall aesthetic perfectly matches a Michelin-star dark-mode UI style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeDRcvO0CNsWdVOW0M2uUXhTytovxEQf0KALCm819JWgBODlYXUN6aAMMagbdbFiau27gwLkOymFaTbhbAnprnx7rdICL8p4jxmEVK0WnODe9cfoh_3EeFkHQbgz1STkCvrdIG9pyyR0Eihu-fxhNRYgB9HSoaGMb4sKfSWdbk_KoAI5Br07Bfgd3iFjzsslbu1W2VZ5v-Y783rt07JEiz1ReKaSjFC1bDB6AtJxBJC-alLD2yncUmik3Zcn6gYEP2boOMA1dnMcR0"/>
+</div>
+<div class="flex-1">
+<h3 class="font-headline-md text-[16px] text-on-surface">Pan-Seared Scallops</h3>
+<p class="font-body-md text-[14px] text-on-surface-variant line-clamp-1 mt-1">Saffron velouté, compressed apple</p>
+</div>
+<div class="text-right">
+<span class="font-body-md text-primary">$38</span>
+</div>
+</div>
+<!-- Menu Item 2 -->
+<div class="flex items-center gap-4 p-3 rounded-lg hover:bg-white/5 transition-colors border border-transparent hover:border-secondary/20 group">
+<div class="w-16 h-16 rounded overflow-hidden flex-shrink-0">
+<img alt="Steak Dish" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500" data-alt="A top-down view of a beautifully plated Wagyu beef fillet on a matte black ceramic dish. The meat is cooked to a perfect medium-rare, adorned with tiny flakes of sea salt and edible gold leaf. The background is completely dark, allowing the rich amber and ruby tones of the dish to serve as a luminous focal point in a high-end digital menu context." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmYuGMxSlIR759YffCrtWh_enN66rp2pXXYhOuLCRUUqEUN8u7BJZA0pqLQzRmPp5POyn0lTo1rLwSWykiPInAUtL8wTHyt4J1DDBf74c2H3N6EbSpwym4uA-QSoTRA21-uSXqcK9Duq3BDYPnWiARFSKL5-xQhW4EbQUmQnzwLp-C8z12McDfbDvdM_60ilU4JkSjT06eDQQXFz-o9x6ISWP1AZbs2h6p-1491ifZLHZPYRR-y6lrkME3n8BDAN-nWxPr748GRMRE"/>
+</div>
+<div class="flex-1">
+<h3 class="font-headline-md text-[16px] text-on-surface">Wagyu A5 Fillet</h3>
+<p class="font-body-md text-[14px] text-on-surface-variant line-clamp-1 mt-1">Black truffle pomme purée</p>
+</div>
+<div class="text-right">
+<span class="font-body-md text-primary">$125</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

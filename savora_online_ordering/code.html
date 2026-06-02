@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Savora - Online Ordering</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Playfair+Display:ital,wght@0,600;0,700;1,600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed-dim": "#ffb77b",
+                    "surface-dim": "#131313",
+                    "inverse-surface": "#e5e2e1",
+                    "on-error-container": "#ffdad6",
+                    "on-primary-fixed": "#261a00",
+                    "tertiary-fixed": "#e5e2e1",
+                    "primary-fixed-dim": "#fbbc00",
+                    "on-secondary": "#4d2700",
+                    "on-primary-container": "#6d5000",
+                    "surface-tint": "#fbbc00",
+                    "surface": "#131313",
+                    "on-error": "#690005",
+                    "inverse-on-surface": "#313030",
+                    "on-surface-variant": "#d4c5ab",
+                    "error": "#ffb4ab",
+                    "error-container": "#93000a",
+                    "surface-bright": "#393939",
+                    "on-secondary-fixed-variant": "#6d3a00",
+                    "surface-container-highest": "#353534",
+                    "on-tertiary-fixed": "#1c1b1b",
+                    "inverse-primary": "#795900",
+                    "surface-container-high": "#2a2a2a",
+                    "on-primary": "#402d00",
+                    "tertiary-container": "#cbc9c8",
+                    "surface-container-low": "#1c1b1b",
+                    "outline-variant": "#504532",
+                    "outline": "#9c8f78",
+                    "tertiary": "#e8e5e4",
+                    "on-tertiary": "#313030",
+                    "primary-container": "#ffbf00",
+                    "surface-container": "#201f1f",
+                    "on-surface": "#e5e2e1",
+                    "on-tertiary-fixed-variant": "#474746",
+                    "on-background": "#e5e2e1",
+                    "surface-container-lowest": "#0e0e0e",
+                    "primary-fixed": "#ffdfa0",
+                    "tertiary-fixed-dim": "#c8c6c5",
+                    "on-secondary-container": "#ffb270",
+                    "secondary": "#ffb77b",
+                    "on-primary-fixed-variant": "#5c4300",
+                    "background": "#131313",
+                    "primary": "#ffe2ab",
+                    "on-secondary-fixed": "#2e1500",
+                    "surface-variant": "#353534",
+                    "on-tertiary-container": "#555454",
+                    "secondary-container": "#7a4100",
+                    "secondary-fixed": "#ffdcc2"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "32px",
+                    "container-max-width": "1280px",
+                    "section-gap": "120px",
+                    "base": "8px",
+                    "margin-desktop": "80px",
+                    "margin-mobile": "20px"
+            },
+            "fontFamily": {
+                    "headline-md": [
+                            "Playfair Display"
+                    ],
+                    "label-sm": [
+                            "Inter"
+                    ],
+                    "display-lg-mobile": [
+                            "Playfair Display"
+                    ],
+                    "display-lg": [
+                            "Playfair Display"
+                    ],
+                    "headline-lg": [
+                            "Playfair Display"
+                    ],
+                    "body-md": [
+                            "Inter"
+                    ],
+                    "body-lg": [
+                            "Inter"
+                    ]
+            },
+            "fontSize": {
+                    "headline-md": [
+                            "24px",
+                            {
+                                    "lineHeight": "32px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "label-sm": [
+                            "12px",
+                            {
+                                    "lineHeight": "16px",
+                                    "letterSpacing": "0.1em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "display-lg-mobile": [
+                            "40px",
+                            {
+                                    "lineHeight": "48px",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "display-lg": [
+                            "64px",
+                            {
+                                    "lineHeight": "72px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "headline-lg": [
+                            "32px",
+                            {
+                                    "lineHeight": "40px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "body-lg": [
+                            "18px",
+                            {
+                                    "lineHeight": "28px",
+                                    "fontWeight": "400"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+<style>
+        /* Custom scrollbar for cart */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #353534;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #504532;
+        }
+        
+        /* Glass inner glow utility */
+        .glass-panel {
+            box-shadow: inset 0 1px 0 0 rgba(184, 115, 51, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased selection:bg-primary selection:text-on-primary">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/10 dark:bg-surface/10 backdrop-blur-xl border-b border-secondary/20 shadow-[0_4px_30px_rgba(184,115,51,0.15)] transition-all duration-300">
+<div class="flex justify-between items-center px-margin-desktop py-6 max-w-container-max-width mx-auto">
+<!-- Brand -->
+<a class="font-headline-md text-headline-md tracking-widest text-primary dark:text-primary uppercase" href="#">
+                Savora
+            </a>
+<!-- Links (Desktop) -->
+<div class="hidden md:flex items-center gap-8">
+<!-- Active Item: Menu -->
+<a class="font-label-sm text-label-sm uppercase tracking-widest text-primary border-b border-primary pb-1 hover:backdrop-blur-2xl hover:bg-white/5 transition-all duration-300 scale-95 duration-200 ease-in-out" href="#">
+                    Menu
+                </a>
+<!-- Inactive Items -->
+<a class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface/80 hover:text-primary transition-colors hover:backdrop-blur-2xl hover:bg-white/5 transition-all duration-300 scale-95 duration-200 ease-in-out" href="#">
+                    Reservations
+                </a>
+<a class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface/80 hover:text-primary transition-colors hover:backdrop-blur-2xl hover:bg-white/5 transition-all duration-300 scale-95 duration-200 ease-in-out" href="#">
+                    Private Dining
+                </a>
+<a class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface/80 hover:text-primary transition-colors hover:backdrop-blur-2xl hover:bg-white/5 transition-all duration-300 scale-95 duration-200 ease-in-out" href="#">
+                    Our Story
+                </a>
+</div>
+<!-- Actions -->
+<div class="flex items-center gap-6">
+<button class="text-on-surface/80 hover:text-primary transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">shopping_bag</span>
+</button>
+<button class="text-on-surface/80 hover:text-primary transition-colors flex items-center justify-center hidden md:flex">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">account_circle</span>
+</button>
+<a class="hidden md:inline-flex items-center justify-center px-6 py-2 border border-secondary/50 text-secondary font-label-sm text-label-sm uppercase tracking-widest hover:border-secondary hover:bg-secondary/10 transition-all" href="#">
+                    Book a Table
+                </a>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop pt-[140px] pb-section-gap">
+<!-- Header -->
+<header class="mb-12">
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-4">Curated Takeaway</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Experience Savora's culinary precision in the comfort of your home. Select dishes are meticulously prepared for transport, ensuring optimal temperature and texture upon arrival.</p>
+</header>
+<div class="flex flex-col lg:flex-row gap-gutter">
+<!-- Left Column: Menu Listings -->
+<div class="flex-1 w-full">
+<!-- Category Filters (Glass Chips) -->
+<div class="flex flex-wrap gap-4 mb-10 sticky top-[100px] z-40 bg-background/80 backdrop-blur-md py-4 -mx-4 px-4 md:mx-0 md:px-0">
+<button class="px-5 py-2 rounded-full border border-secondary/40 bg-secondary/10 text-secondary font-label-sm text-label-sm uppercase tracking-wider transition-all">All Items</button>
+<button class="px-5 py-2 rounded-full border border-surface-variant text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider hover:border-secondary/40 hover:text-secondary transition-all">Starters</button>
+<button class="px-5 py-2 rounded-full border border-surface-variant text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider hover:border-secondary/40 hover:text-secondary transition-all">Mains</button>
+<button class="px-5 py-2 rounded-full border border-surface-variant text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider hover:border-secondary/40 hover:text-secondary transition-all">Sides</button>
+<button class="px-5 py-2 rounded-full border border-surface-variant text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider hover:border-secondary/40 hover:text-secondary transition-all">Desserts</button>
+</div>
+<!-- Menu Grid -->
+<div class="space-y-6">
+<!-- Menu Item 1: Standard List View -->
+<article class="group bg-surface-container rounded-lg overflow-hidden flex flex-col sm:flex-row transition-all duration-300 hover:bg-surface-container-high relative">
+<div class="sm:w-1/3 aspect-video sm:aspect-square overflow-hidden relative">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A high-end, slow-cooked short rib resting on a dark ceramic plate, glazed with a rich, glossy reduction. The dish is surrounded by delicate, vibrant green micro-herbs and a smooth parsnip purée. The lighting is moody and directional, highlighting the texture of the meat and the sheen of the sauce against the deep charcoal background, perfectly aligning with a sophisticated, nocturnal culinary aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcBji6NRt5KgI9-cRSm93GgG2YY7kUPfLw2FXFg5MxrrFLJcn6sd0gtv_AHzDHQkxIJS2qp6_TbuKFfCAqpK3vmlwRW8nMMFjAA4HWplLj3Vbx2iq5Pq3kRsPqau2UbQVZOWYughS9sxBQjaZvPXdCEA-bgfS14SFoYpb265F3sRnGgO3vcIyQJDFieTeYE1m3cNfZEw4CazyOg27VVK7qNPEbAvr3P9kClstHpfOxETEo2NebJKIdZeMaVkz51nzXiXMp5ivODU5Y"/>
+<div class="absolute top-3 left-3 px-2 py-1 bg-surface-dim/80 backdrop-blur-md rounded border border-secondary/20 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-secondary">schedule</span>
+<span class="font-label-sm text-label-sm text-secondary">25 Min</span>
+</div>
+</div>
+<div class="p-6 flex-1 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-on-background">Braised Wagyu Short Rib</h3>
+<span class="font-body-lg text-body-lg text-secondary">$58</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">Slow-cooked for 48 hours, served with a smoked parsnip purée, wild mushroom duxelles, and a black garlic reduction.</p>
+<div class="flex gap-2 mb-4">
+<span class="px-2 py-1 bg-secondary/10 border border-secondary/20 rounded text-secondary font-label-sm text-label-sm uppercase text-[10px]">Gluten-Free</span>
+<span class="px-2 py-1 bg-surface-bright border border-surface-variant rounded text-on-surface-variant font-label-sm text-label-sm uppercase text-[10px]">Chef's Signature</span>
+</div>
+</div>
+<!-- Add to Order Button -->
+<div class="flex justify-end">
+<button class="px-6 py-2 bg-white/5 border border-secondary/20 hover:border-secondary/60 text-secondary font-label-sm text-label-sm uppercase tracking-widest transition-all glass-panel rounded">
+                                    Select Options
+                                </button>
+</div>
+</div>
+</article>
+<!-- Menu Item 2: Expanded with Preferences UI -->
+<article class="group bg-surface-container-high rounded-lg overflow-hidden flex flex-col border border-secondary/20 shadow-[0_4px_30px_rgba(184,115,51,0.05)] relative">
+<div class="flex flex-col sm:flex-row">
+<div class="sm:w-1/3 aspect-video sm:aspect-square overflow-hidden relative">
+<img class="w-full h-full object-cover transition-transform duration-700" data-alt="A pristine, pan-seared sea bass fillet presented on a sleek, dark stone slab. The fish features perfectly crisp, golden skin, contrasting with a vibrant saffron emulsion pooled beneath it. Slices of charred fennel and delicate edible flowers adorn the plate. The scene is lit with dramatic, contrasting light that emphasizes the high-end, minimalist aesthetic and warm amber accents typical of modern fine dining." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAj7LLqh5TlbU27wzA90UOFOPwHeGXVSlvbvwiPUg7VtKZdqZu4JxcjCH1doEr3gqk3_ZtkmufgLHpL4a-2jTnr9lMLUgCRMv8gV5IWnIC5X94OpOS-EJ6FCl5xoALQgwLRtkELtzkpLr5mSZa6qP8JH1OGDXj3dP4DZCglX9nyRut33FuB3xf7mWj_MMvhDtgldHsGkfgq4t8fOPKRqbHuDu7LgYp-e2KGKYvPvJ-sUnOx7hzzcyCQcVE1UuRQYF3j19URQFcNo4Bw"/>
+<div class="absolute top-3 left-3 px-2 py-1 bg-surface-dim/80 backdrop-blur-md rounded border border-secondary/20 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-secondary">schedule</span>
+<span class="font-label-sm text-label-sm text-secondary">20 Min</span>
+</div>
+</div>
+<div class="p-6 flex-1 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-on-background">Pan-Seared Chilean Sea Bass</h3>
+<span class="font-body-lg text-body-lg text-secondary">$46</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">Sustainably sourced, accompanied by charred fennel, fingerling potatoes, and a delicate saffron-citrus emulsion.</p>
+</div>
+</div>
+</div>
+<!-- Expanded Preferences Panel -->
+<div class="bg-surface border-t border-surface-variant p-6 glass-panel">
+<h4 class="font-label-sm text-label-sm text-secondary uppercase tracking-widest mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">tune</span> Customization
+                            </h4>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<!-- Select Input -->
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant uppercase mb-2">Cooking Preference</label>
+<div class="relative">
+<select class="w-full bg-surface-dim border-b border-surface-variant hover:border-secondary focus:border-primary text-on-background font-body-md text-body-md py-3 px-0 appearance-none focus:ring-0 transition-colors bg-transparent cursor-pointer">
+<option class="bg-surface-dim text-on-background" value="medium">Medium (Chef Recommended)</option>
+<option class="bg-surface-dim text-on-background" value="medium-well">Medium Well</option>
+<option class="bg-surface-dim text-on-background" value="well-done">Well Done</option>
+</select>
+<span class="material-symbols-outlined absolute right-0 top-1/2 -translate-y-1/2 text-surface-variant pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Text Input -->
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant uppercase mb-2">Allergies / Special Requests</label>
+<input class="w-full bg-surface-dim border-b border-surface-variant hover:border-secondary focus:border-primary text-on-background font-body-md text-body-md py-3 px-0 focus:ring-0 transition-colors placeholder:text-surface-variant/50 bg-transparent" placeholder="e.g., No dairy, severe nut allergy..." type="text"/>
+</div>
+</div>
+<div class="flex items-center justify-between pt-4 border-t border-surface-variant/50">
+<!-- Quantity Control -->
+<div class="flex items-center gap-4 bg-surface-container rounded-full px-4 py-2 border border-surface-variant">
+<button class="text-on-surface-variant hover:text-primary transition-colors flex items-center"><span class="material-symbols-outlined text-[18px]">remove</span></button>
+<span class="font-body-md text-body-md text-on-background w-4 text-center">1</span>
+<button class="text-on-surface-variant hover:text-primary transition-colors flex items-center"><span class="material-symbols-outlined text-[18px]">add</span></button>
+</div>
+<button class="px-8 py-3 bg-primary text-on-primary font-label-sm text-label-sm uppercase tracking-widest rounded hover:bg-primary-fixed transition-colors shadow-[0_4px_20px_rgba(255,226,171,0.2)]">
+                                    Add to Order - $46
+                                </button>
+</div>
+</div>
+</article>
+</div>
+</div>
+<!-- Right Column: Persistent Cart Sidebar -->
+<aside class="hidden lg:block w-[400px] shrink-0">
+<div class="sticky top-[120px] h-[calc(100vh-140px)] flex flex-col bg-surface/5 backdrop-blur-2xl border border-secondary/20 rounded-xl shadow-[0_4px_40px_rgba(184,115,51,0.1)] glass-panel overflow-hidden">
+<!-- Cart Header -->
+<div class="p-6 border-b border-secondary/10 flex justify-between items-center bg-white/[0.02]">
+<h2 class="font-headline-md text-headline-md text-on-background">Your Order</h2>
+<span class="font-label-sm text-label-sm text-secondary bg-secondary/10 px-2 py-1 rounded">2 Items</span>
+</div>
+<!-- Cart Items List -->
+<div class="flex-1 overflow-y-auto p-6 space-y-6">
+<!-- Cart Item 1 -->
+<div class="flex gap-4 group">
+<div class="w-16 h-16 rounded overflow-hidden shrink-0 border border-surface-variant">
+<img class="w-full h-full object-cover" data-alt="A close-up view of an elegant appetizer featuring thinly sliced crudo on a dark textured plate, garnished with microgreens and a drizzle of golden olive oil. The lighting is subtle, creating a sophisticated and appetizing presentation that aligns with a high-end restaurant aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC29bRCtsGBOeX4dfASD5U6-IwI_YmqtCjr-76rZLR94yENBbf4k4yQigXIqmR7N34UvAczS5xRUcI4VSsNTsp3EcvYymdj-YATb-24JI-TeuZhgFgjMP-QZr_VfjyCrPgTemR9NEnE8rlm82rK_NnyXMsj3qMlDnbK5RS41JI2tjFhAqJ0iORcYCKCmwwYzFiBh6iGYJQ-0K-JRSzCxTO-ZzbO-bu3_dV-RDlASqUqZJ9UKTEAE-x7AghLko9Gy8vqdLaHjJoO1UjQ"/>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<h4 class="font-body-md text-body-md text-on-background leading-tight">Hamachi Crudo</h4>
+<span class="font-body-md text-body-md text-secondary ml-2">$28</span>
+</div>
+<div class="flex items-center justify-between mt-2">
+<div class="flex items-center gap-3">
+<button class="text-surface-variant hover:text-on-background transition-colors"><span class="material-symbols-outlined text-[16px]">remove</span></button>
+<span class="font-label-sm text-label-sm text-on-surface-variant">1</span>
+<button class="text-surface-variant hover:text-on-background transition-colors"><span class="material-symbols-outlined text-[16px]">add</span></button>
+</div>
+<button class="text-surface-variant hover:text-error transition-colors opacity-0 group-hover:opacity-100"><span class="material-symbols-outlined text-[16px]">delete</span></button>
+</div>
+</div>
+</div>
+<!-- Cart Item 2 -->
+<div class="flex gap-4 group">
+<div class="w-16 h-16 rounded overflow-hidden shrink-0 border border-surface-variant">
+<img class="w-full h-full object-cover" data-alt="A small portion view of pan-seared sea bass, highlighting the golden crispy skin and the vibrant yellow saffron sauce beneath it. Set against a dark, moody background typical of luxury fine dining photography, focusing on texture and color contrast." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1i94Bq3FJh4-FHY6yRyRjeMsQbszkTdkVouVJUrZyczMhlBp8XpmwtFBWIJyVyRq3XIzBBqYsd2gYdPr4UIHWdGNs0Oq8fDp3dTe9abYkr6LzVVk6VUqG__vizd7IbBiqkntyrMkwI4ZhMhFsCT6NI4MDX7FYRdMxN1WqRdammGwEUyUKON35O9LFP0WgcOHBLGZBG6OFCt7mg5RXn8dQnYF_LE0JcODi6tHzF0NgxHadKEflpqkMRc9AXGPLRkkl-rSwL4XNDLKm"/>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<h4 class="font-body-md text-body-md text-on-background leading-tight">Pan-Seared Sea Bass</h4>
+<span class="font-body-md text-body-md text-secondary ml-2">$46</span>
+</div>
+<p class="font-label-sm text-[10px] text-surface-variant mt-1">Medium · No Dairy</p>
+<div class="flex items-center justify-between mt-2">
+<div class="flex items-center gap-3">
+<button class="text-surface-variant hover:text-on-background transition-colors"><span class="material-symbols-outlined text-[16px]">remove</span></button>
+<span class="font-label-sm text-label-sm text-on-surface-variant">1</span>
+<button class="text-surface-variant hover:text-on-background transition-colors"><span class="material-symbols-outlined text-[16px]">add</span></button>
+</div>
+<button class="text-surface-variant hover:text-error transition-colors opacity-0 group-hover:opacity-100"><span class="material-symbols-outlined text-[16px]">delete</span></button>
+</div>
+</div>
+</div>
+</div>
+<!-- Cart Footer / Summary -->
+<div class="p-6 border-t border-secondary/10 bg-surface-container-highest/50 backdrop-blur-md">
+<div class="space-y-3 mb-6">
+<div class="flex justify-between font-body-md text-body-md text-on-surface-variant">
+<span>Subtotal</span>
+<span>$74.00</span>
+</div>
+<div class="flex justify-between font-body-md text-body-md text-on-surface-variant">
+<span>Taxes &amp; Fees</span>
+<span>$8.50</span>
+</div>
+<div class="flex justify-between font-headline-md text-headline-md text-on-background pt-3 border-t border-surface-variant">
+<span>Total</span>
+<span class="text-primary">$82.50</span>
+</div>
+</div>
+<button class="w-full py-4 bg-primary text-on-primary font-label-sm text-label-sm uppercase tracking-widest rounded hover:bg-primary-fixed transition-colors shadow-[0_4px_20px_rgba(255,226,171,0.2)] flex justify-center items-center gap-2">
+                            Proceed to Checkout <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+<p class="text-center mt-4 font-label-sm text-[10px] text-surface-variant flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[12px]">schedule</span> Estimated Prep: 25-30 Min
+                        </p>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-section-gap border-t border-secondary/10 bg-surface-container-lowest dark:bg-surface-container-lowest">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop max-w-container-max-width mx-auto">
+<!-- Brand Column -->
+<div class="col-span-1 md:col-span-2">
+<div class="font-headline-lg text-headline-lg text-primary italic mb-4">Savora</div>
+<p class="font-label-sm text-label-sm uppercase tracking-tighter text-tertiary-fixed-dim dark:text-tertiary-fixed-dim mt-8">
+                    © 2024 Savora Excellence. All rights reserved.
+                </p>
+</div>
+<!-- Links Column -->
+<div class="col-span-1 flex flex-col space-y-4">
+<a class="font-label-sm text-label-sm uppercase tracking-tighter text-on-tertiary-container hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-label-sm text-label-sm uppercase tracking-tighter text-on-tertiary-container hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="font-label-sm text-label-sm uppercase tracking-tighter text-on-tertiary-container hover:text-primary transition-colors" href="#">Sustainability</a>
+</div>
+<div class="col-span-1 flex flex-col space-y-4">
+<a class="font-label-sm text-label-sm uppercase tracking-tighter text-on-tertiary-container hover:text-primary transition-colors" href="#">Careers</a>
+<a class="font-label-sm text-label-sm uppercase tracking-tighter text-on-tertiary-container hover:text-primary transition-colors" href="#">Press Kit</a>
+</div>
+</div>
+</footer>
+<!-- Mobile View Cart FAB (Visible only on small screens) -->
+<div class="fixed bottom-6 right-6 lg:hidden z-50">
+<button class="bg-primary text-on-primary rounded-full px-6 py-4 shadow-[0_4px_20px_rgba(255,226,171,0.3)] flex items-center gap-3 font-label-sm text-label-sm uppercase tracking-widest">
+<span class="material-symbols-outlined">shopping_bag</span>
+            View Cart (2)
+        </button>
+</div>
+</body></html>

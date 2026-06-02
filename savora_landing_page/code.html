@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Savora - Where Every Meal Becomes an Experience</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#ffb77b",
+                        "surface-dim": "#131313",
+                        "inverse-surface": "#e5e2e1",
+                        "on-error-container": "#ffdad6",
+                        "on-primary-fixed": "#261a00",
+                        "tertiary-fixed": "#e5e2e1",
+                        "primary-fixed-dim": "#fbbc00",
+                        "on-secondary": "#4d2700",
+                        "on-primary-container": "#6d5000",
+                        "surface-tint": "#fbbc00",
+                        "surface": "#131313",
+                        "on-error": "#690005",
+                        "inverse-on-surface": "#313030",
+                        "on-surface-variant": "#d4c5ab",
+                        "error": "#ffb4ab",
+                        "error-container": "#93000a",
+                        "surface-bright": "#393939",
+                        "on-secondary-fixed-variant": "#6d3a00",
+                        "surface-container-highest": "#353534",
+                        "on-tertiary-fixed": "#1c1b1b",
+                        "inverse-primary": "#795900",
+                        "surface-container-high": "#2a2a2a",
+                        "on-primary": "#402d00",
+                        "tertiary-container": "#cbc9c8",
+                        "surface-container-low": "#1c1b1b",
+                        "outline-variant": "#504532",
+                        "outline": "#9c8f78",
+                        "tertiary": "#e8e5e4",
+                        "on-tertiary": "#313030",
+                        "primary-container": "#ffbf00",
+                        "surface-container": "#201f1f",
+                        "on-surface": "#e5e2e1",
+                        "on-tertiary-fixed-variant": "#474746",
+                        "on-background": "#e5e2e1",
+                        "surface-container-lowest": "#0e0e0e",
+                        "primary-fixed": "#ffdfa0",
+                        "tertiary-fixed-dim": "#c8c6c5",
+                        "on-secondary-container": "#ffb270",
+                        "secondary": "#ffb77b",
+                        "on-primary-fixed-variant": "#5c4300",
+                        "background": "#131313",
+                        "primary": "#ffe2ab",
+                        "on-secondary-fixed": "#2e1500",
+                        "surface-variant": "#353534",
+                        "on-tertiary-container": "#555454",
+                        "secondary-container": "#7a4100",
+                        "secondary-fixed": "#ffdcc2"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "32px",
+                        "container-max-width": "1280px",
+                        "section-gap": "120px",
+                        "base": "8px",
+                        "margin-desktop": "80px",
+                        "margin-mobile": "20px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Playfair Display", "serif"],
+                        "label-sm": ["Inter", "sans-serif"],
+                        "display-lg-mobile": ["Playfair Display", "serif"],
+                        "display-lg": ["Playfair Display", "serif"],
+                        "headline-lg": ["Playfair Display", "serif"],
+                        "body-md": ["Inter", "sans-serif"],
+                        "body-lg": ["Inter", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                        "display-lg-mobile": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "display-lg": ["64px", { "lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background min-h-screen antialiased selection:bg-primary/30 selection:text-primary">
+<!-- TopNavBar Shared Component -->
+<header class="bg-surface/10 dark:bg-surface/10 backdrop-blur-xl fixed top-0 w-full z-50 border-b border-secondary/20 shadow-[0_4px_30px_rgba(184,115,51,0.15)]">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-6 max-w-container-max-width mx-auto">
+<!-- Brand -->
+<div class="font-headline-md text-headline-md tracking-widest text-primary dark:text-primary uppercase">
+                Savora
+            </div>
+<!-- Navigation Links (Desktop) -->
+<nav class="hidden md:flex gap-gutter items-center">
+<a class="font-label-sm text-label-sm text-on-surface/80 hover:text-primary transition-colors" href="#">Menu</a>
+<a class="font-label-sm text-label-sm text-on-surface/80 hover:text-primary transition-colors" href="#">Reservations</a>
+<a class="font-label-sm text-label-sm text-on-surface/80 hover:text-primary transition-colors" href="#">Private Dining</a>
+<a class="font-label-sm text-label-sm text-on-surface/80 hover:text-primary transition-colors" href="#">Our Story</a>
+</nav>
+<!-- Actions -->
+<div class="flex items-center gap-6">
+<div class="hidden md:flex items-center gap-4">
+<button class="text-on-surface/80 hover:text-primary transition-colors hover:backdrop-blur-2xl hover:bg-white/5 transition-all duration-300 p-2 rounded-full scale-95 duration-200 ease-in-out">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+</button>
+<button class="text-on-surface/80 hover:text-primary transition-colors hover:backdrop-blur-2xl hover:bg-white/5 transition-all duration-300 p-2 rounded-full scale-95 duration-200 ease-in-out">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+<button class="bg-primary text-on-primary font-label-sm text-label-sm px-6 py-3 rounded hover:bg-primary-container transition-colors uppercase tracking-widest hidden md:block">
+                    Book a Table
+                </button>
+<button class="md:hidden text-primary">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Hero Section -->
+<section class="relative min-h-screen flex items-center justify-center pt-24 overflow-hidden border-b border-secondary/10">
+<!-- Cinematic Background -->
+<div class="absolute inset-0 z-0 bg-cover bg-center transform scale-105 transition-transform duration-[20s] ease-out hover:scale-110" data-alt="A cinematic, low-key lighting shot of a high-end restaurant interior at night. The scene is dominated by deep charcoal shadows and illuminated by warm, amber table lamps casting a soft, luxurious glow. A blurred, impeccably dressed waiter is visible in the background, adding movement to the sophisticated, moody atmosphere. The overall aesthetic perfectly matches a modern minimalist, Michelin-star culinary experience." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAKu9HEhLP73q_pvTCPM244XRUhDCD4-7g5k2_jjDAkGSCoxPPeCU0TS8LNssCY_hTaDlayHywPwr5U2-5IP09ZuMKDgjMw6rjdDCl1zOiyVJ8mFaP9F248vdauwbj1xC1Pm9rkPqNBOW71crJ_ZHdYYLr3BVkRiryOkJ4qQJ-YQne1dk24x0Rw6_hdL_8rvMSpx7lADE-K7Eb5Gap4U-ipc6fDRRZexno1PTWsH-Jgc8bmPOQYBcRUM0F-imkWdINuiSSjlQe3Vbd7');">
+<!-- Dark gradient overlay for text readability and glassmorphism depth -->
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/30"></div>
+</div>
+<div class="relative z-10 max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop w-full flex flex-col items-center text-center">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-[0.2em] mb-6 opacity-80 border-t border-secondary/30 pt-2 inline-block">A Michelin-Starred Journey</span>
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface mb-8 max-w-4xl drop-shadow-2xl">
+                Where Every Meal Becomes an Experience
+            </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mb-12 opacity-90">
+                Immerse yourself in a symphony of flavors crafted with precision. Savora transcends traditional dining, offering an intimate exploration of culinary artistry in a sophisticated, nocturnal setting.
+            </p>
+<div class="flex flex-col sm:flex-row gap-6 w-full sm:w-auto">
+<button class="bg-primary text-on-primary font-label-sm text-label-sm px-8 py-4 rounded uppercase tracking-widest hover:bg-primary-container transition-all hover:shadow-[0_0_20px_rgba(255,226,171,0.3)]">
+                    Book a Table
+                </button>
+<button class="relative border border-secondary/30 bg-white/5 backdrop-blur-md text-on-surface font-label-sm text-label-sm px-8 py-4 rounded uppercase tracking-widest hover:border-secondary hover:bg-white/10 transition-all overflow-hidden group">
+<div class="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-secondary to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    Explore Menu
+                </button>
+</div>
+</div>
+</section>
+<!-- Featured Dishes (Bento Grid) -->
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max-width mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-4">Signature Creations</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-lg">A curated selection of our most avant-garde dishes, where organic ingredients meet polished culinary technique.</p>
+</div>
+<a class="font-label-sm text-label-sm text-secondary hover:text-primary uppercase tracking-widest flex items-center gap-2 transition-colors border-b border-transparent hover:border-primary pb-1" href="#">
+                View Full Menu <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Large Hero Dish -->
+<div class="md:col-span-7 group cursor-pointer">
+<div class="relative w-full aspect-[4/3] rounded-lg overflow-hidden mb-6 bg-surface-container border border-white/5 relative shadow-[0_4px_30px_rgba(184,115,51,0.05)]">
+<!-- Inner Glow -->
+<div class="absolute inset-x-0 top-0 h-[1px] bg-secondary/20 z-20"></div>
+<img alt="Featured Dish" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A meticulously plated fine dining dish viewed from a top-down perspective. A dark, textured ceramic plate holds an avant-garde arrangement of seared scallops, vibrant green purees, and delicate micro-greens. The lighting is moody and focused, typical of a high-end restaurant, contrasting sharply against the deep charcoal background. The composition exudes sophisticated indulgence and modern culinary artistry." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1G-nknmhNvWTO7J7OsIZ0fnXrKfb-5AHHyHnJqZmpdi7jyHhCXijfeKZf8tJR-gzW5AA7iROQjtD4qw9kagu_vxF3-VS_krEfbcIy2xTn_yyImlNyOCc_N8F7_7Y4LTOfTFJQtFcXCsHnbeibgqpWKJvSceALsTIdLF31eW3ElXbUrP4Dj2fIO4CT1SiJkQ43uGLePPOIapDXb2FImeZAT6iPtkQujz8QIa8veLcDTjr8WGr1OFX_JoTlayh-Pk3QkTHiA05tlFGb"/>
+<div class="absolute top-4 left-4 bg-secondary/20 backdrop-blur-md border border-secondary/30 px-3 py-1 rounded font-label-sm text-label-sm text-on-surface uppercase tracking-widest z-10">Chef's Choice</div>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2 group-hover:text-primary transition-colors">Smoked Venison Loin</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Juniper jus, charred leek ash, wild blackberry reduction, and fermented parsnip purée.</p>
+</div>
+<!-- Smaller Side Dishes -->
+<div class="md:col-span-5 flex flex-col gap-gutter">
+<div class="group cursor-pointer flex gap-6 items-center">
+<div class="w-1/2 aspect-square rounded-lg overflow-hidden bg-surface-container relative border border-white/5">
+<div class="absolute inset-x-0 top-0 h-[1px] bg-secondary/20 z-20"></div>
+<img alt="Dish 2" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="An elegant, minimalist appetizer served on a sleek, matte black stone slab. The dish features intricate layers of cured fish, translucent radish slices, and drops of golden infused oil. The scene is lit with a soft, directional amber light, creating deep shadows that emphasize the texture of the stone and the delicate nature of the food." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKqjFMZkMMJ2DvW5fGPgl9_J2DieMrB6GD9IPtDIVhqT4mfBikTvfNuw3l7pc5kEFD9VNNP4YBYMx8jxu4kGeDu3jzcIgYb053IX3QrOZqyr6UModShN6ejyyw8B0SWGYrtLIubmnu6fEhAwwzZjI45TTFqXaBQs9EfnCEbBxg1b65UXwmkdnYztWw-d7um1wdoiUGTmuVmnCC0ukUh3-GCSZ_dnubZlhD_B_gsvRud70QE3vQfzBRkOT8na1wP8S6vEWRnCl1lqxX"/>
+</div>
+<div class="w-1/2">
+<div class="inline-block bg-secondary/10 px-2 py-1 rounded font-label-sm text-label-sm text-secondary uppercase tracking-widest mb-3 border border-secondary/20">Vegan</div>
+<h3 class="font-headline-md text-headline-md text-on-surface text-xl mb-2 group-hover:text-primary transition-colors">Heirloom Tomato Tartare</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm line-clamp-3">Aged balsamic caviar, basil emulsion, and crisp sourdough lace.</p>
+</div>
+</div>
+<div class="group cursor-pointer flex gap-6 items-center">
+<div class="w-1/2 aspect-square rounded-lg overflow-hidden bg-surface-container relative border border-white/5">
+<div class="absolute inset-x-0 top-0 h-[1px] bg-secondary/20 z-20"></div>
+<img alt="Dish 3" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A decadent dessert presented on a dark, reflective glass plate. A perfect sphere of dark chocolate sits alongside a smear of vibrant raspberry coulis and delicate gold leaf flakes. The lighting captures the glossy sheen of the chocolate and the subtle inner glow of the copper-toned accents, perfectly matching a luxurious, modern glassmorphic aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnSYzKlRRAh4v9eKhc2vSkj6y19M5GvS70H6e9QJR4N2vT6ukJJsDdhUgC2h2vgVdQ0CoGH60XoS87HY-PQAjtmTWVB5jx5caIUcLmbnppJS5TRXMZ9Z9SWX8hPmI9pleKjyi1_gYfpwN5P14Vwbgl04Oe7_hR6bz3CKT_KBWrVq35JowKK2LiYIKu_eG2KjNHI4Ubf936C_Be-cTh__-0kTG5A68QFf2t4Wj_D9QMdS9YufR_qmo-9Q0GALMir7w7xQHvTJvTyPf5"/>
+</div>
+<div class="w-1/2">
+<h3 class="font-headline-md text-headline-md text-on-surface text-xl mb-2 group-hover:text-primary transition-colors">Valrhona Sphere</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm line-clamp-3">Dark chocolate shell, liquid espresso core, toasted hazelnut soil, and gold leaf.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Chef's Story Section -->
+<section class="py-section-gap bg-surface-container relative border-y border-white/5">
+<div class="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-secondary/20 to-transparent"></div>
+<div class="max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 md:grid-cols-2 gap-gutter items-center">
+<div class="relative order-2 md:order-1">
+<div class="aspect-[3/4] rounded-lg overflow-hidden relative shadow-[0_10px_40px_rgba(184,115,51,0.1)]">
+<div class="absolute inset-0 bg-gradient-to-tr from-surface via-transparent to-transparent opacity-60 z-10"></div>
+<img alt="Head Chef" class="w-full h-full object-cover" data-alt="A portrait of a distinguished executive chef in a pristine white uniform, standing in a dimly lit, state-of-the-art professional kitchen. The chef looks thoughtfully off-camera. The background features gleaming stainless steel surfaces and subtle flares from copper heat lamps. The overall tone is intense, passionate, and deeply sophisticated, matching the Michelin-star brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNjMXu6ANH6bYDOq20hYlr7GRh46HO4R47uIBu_tDYSNlvAryLtkstHCDRg4YtIpSRQV6EQk5sOdYaMjV9gwGFUAy3ucxAythzgPUxcTyI6RO09GZtnfFTWP5odic-5zNK6i0tBkb4FhrACyXJZ2WGrKZo3HlhxHIAXJIMw3r_zJcr-NiB5fdRgy7QORPA0TD5zXoan7NWJQWX30xLr3SjStk0c98YjVKnpWbHaCSnKEc29naosxK8_e5wbAJTmrshY0-lCzShNGJ-"/>
+</div>
+<!-- Decorative Element -->
+<div class="absolute -bottom-8 -right-8 w-48 h-48 border border-secondary/30 rounded-full blur-[1px] hidden md:block"></div>
+</div>
+<div class="order-1 md:order-2 pl-0 md:pl-12">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-[0.2em] mb-4 block">The Visionary</span>
+<h2 class="font-display-lg-mobile md:font-headline-lg text-display-lg-mobile md:text-headline-lg text-on-surface mb-6">Chef Alexandre Dubois</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">
+                    "Cooking is not merely about sustenance; it is the deliberate orchestration of nature's finest elements into a fleeting moment of pure emotion."
+                </p>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8 opacity-80">
+                    With over two decades traversing the globe's most demanding kitchens, Chef Dubois brings an uncompromising standard of excellence to Savora. His philosophy is rooted in the deep respect for local terroir, elevated by avant-garde techniques that transform familiar ingredients into astonishing revelations.
+                </p>
+<button class="relative border-b border-secondary pb-1 font-label-sm text-label-sm text-on-surface uppercase tracking-widest hover:text-primary hover:border-primary transition-colors group">
+                    Read the Full Story
+                    <span class="absolute left-0 bottom-[-1px] w-0 h-[1px] bg-primary transition-all duration-300 group-hover:w-full"></span>
+</button>
+</div>
+</div>
+</section>
+<!-- Testimonials & Awards -->
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max-width mx-auto relative">
+<div class="text-center mb-16">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-4">Acclaimed by Connoisseurs</h2>
+<div class="h-[1px] w-24 bg-secondary/30 mx-auto mt-6"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Testimonial Card 1 -->
+<div class="bg-surface/50 backdrop-blur-xl border border-white/5 p-8 rounded-lg relative overflow-hidden group hover:border-secondary/30 transition-colors shadow-[0_4px_20px_rgba(0,0,0,0.5)]">
+<div class="absolute inset-x-0 top-0 h-[1px] bg-secondary/10 group-hover:bg-secondary/40 transition-colors"></div>
+<div class="flex gap-1 mb-6 text-primary">
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface italic mb-8">"An absolute revelation. Every course was a masterclass in balance and daring flavor profiles. The ambiance is unmatched in the city."</p>
+<div class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">The Culinary Times</div>
+</div>
+<!-- Testimonial Card 2 -->
+<div class="bg-surface/50 backdrop-blur-xl border border-white/5 p-8 rounded-lg relative overflow-hidden group hover:border-secondary/30 transition-colors shadow-[0_4px_20px_rgba(0,0,0,0.5)]">
+<div class="absolute inset-x-0 top-0 h-[1px] bg-secondary/10 group-hover:bg-secondary/40 transition-colors"></div>
+<div class="flex gap-1 mb-6 text-primary">
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface italic mb-8">"Savora doesn't just serve food; they curate memories. The attention to detail in both service and plating is breathtaking."</p>
+<div class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Eleanor V., Verified Guest</div>
+</div>
+<!-- Testimonial Card 3 -->
+<div class="bg-surface/50 backdrop-blur-xl border border-white/5 p-8 rounded-lg relative overflow-hidden group hover:border-secondary/30 transition-colors shadow-[0_4px_20px_rgba(0,0,0,0.5)]">
+<div class="absolute inset-x-0 top-0 h-[1px] bg-secondary/10 group-hover:bg-secondary/40 transition-colors"></div>
+<div class="flex gap-1 mb-6 text-primary">
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface italic mb-8">"A flawless execution from start to finish. The wine pairings elevated the already brilliant dishes to stratospheric heights."</p>
+<div class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Gastronomy Weekly</div>
+</div>
+</div>
+<!-- Minimalist Awards Strip -->
+<div class="mt-20 flex flex-wrap justify-center gap-12 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+<div class="font-headline-md text-headline-md text-on-surface text-center flex flex-col items-center gap-2">
+<span class="material-symbols-outlined text-4xl">restaurant</span>
+<span class="font-label-sm text-label-sm uppercase">Michelin Guide<br/>2024</span>
+</div>
+<div class="font-headline-md text-headline-md text-on-surface text-center flex flex-col items-center gap-2">
+<span class="material-symbols-outlined text-4xl">emoji_events</span>
+<span class="font-label-sm text-label-sm uppercase">James Beard<br/>Finalist</span>
+</div>
+<div class="font-headline-md text-headline-md text-on-surface text-center flex flex-col items-center gap-2">
+<span class="material-symbols-outlined text-4xl">workspace_premium</span>
+<span class="font-label-sm text-label-sm uppercase">World's 50 Best<br/>Discovery</span>
+</div>
+</div>
+</section>
+<!-- Footer Shared Component -->
+<footer class="bg-surface-container-lowest dark:bg-surface-container-lowest w-full py-section-gap border-t border-secondary/10">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop max-w-container-max-width mx-auto">
+<!-- Brand Column -->
+<div class="col-span-1 md:col-span-1 flex flex-col items-start gap-4">
+<div class="font-headline-lg text-headline-lg text-primary italic">Savora</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xs mt-4">
+                    Sophisticated indulgence in every bite. An unforgettable nocturnal culinary journey.
+                </p>
+</div>
+<!-- Links Column -->
+<div class="col-span-1 md:col-span-2 flex flex-col md:flex-row gap-12 justify-center">
+<div class="flex flex-col gap-4">
+<span class="font-label-sm text-label-sm uppercase tracking-tighter text-on-surface mb-2">Legal</span>
+<a class="font-label-sm text-label-sm uppercase tracking-tighter text-on-tertiary-container hover:text-primary transition-colors hover:opacity-80 transition-opacity" href="#">Privacy Policy</a>
+<a class="font-label-sm text-label-sm uppercase tracking-tighter text-on-tertiary-container hover:text-primary transition-colors hover:opacity-80 transition-opacity" href="#">Terms of Service</a>
+</div>
+<div class="flex flex-col gap-4">
+<span class="font-label-sm text-label-sm uppercase tracking-tighter text-on-surface mb-2">About</span>
+<a class="font-label-sm text-label-sm uppercase tracking-tighter text-on-tertiary-container hover:text-primary transition-colors hover:opacity-80 transition-opacity" href="#">Sustainability</a>
+<a class="font-label-sm text-label-sm uppercase tracking-tighter text-on-tertiary-container hover:text-primary transition-colors hover:opacity-80 transition-opacity" href="#">Careers</a>
+<a class="font-label-sm text-label-sm uppercase tracking-tighter text-on-tertiary-container hover:text-primary transition-colors hover:opacity-80 transition-opacity" href="#">Press Kit</a>
+</div>
+</div>
+<!-- Copyright Column -->
+<div class="col-span-1 md:col-span-1 flex flex-col justify-end md:items-end mt-8 md:mt-0">
+<span class="font-label-sm text-label-sm uppercase tracking-tighter text-tertiary-fixed-dim dark:text-tertiary-fixed-dim">
+                    © 2024 Savora Excellence. All rights reserved.
+                </span>
+</div>
+</div>
+</footer>
+</body></html>

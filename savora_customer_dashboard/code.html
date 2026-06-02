@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Savora - Customer Dashboard</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Playfair+Display:ital,wght@0,600;0,700;1,600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#ffb77b",
+                        "surface-dim": "#131313",
+                        "inverse-surface": "#e5e2e1",
+                        "on-error-container": "#ffdad6",
+                        "on-primary-fixed": "#261a00",
+                        "tertiary-fixed": "#e5e2e1",
+                        "primary-fixed-dim": "#fbbc00",
+                        "on-secondary": "#4d2700",
+                        "on-primary-container": "#6d5000",
+                        "surface-tint": "#fbbc00",
+                        "surface": "#131313",
+                        "on-error": "#690005",
+                        "inverse-on-surface": "#313030",
+                        "on-surface-variant": "#d4c5ab",
+                        "error": "#ffb4ab",
+                        "error-container": "#93000a",
+                        "surface-bright": "#393939",
+                        "on-secondary-fixed-variant": "#6d3a00",
+                        "surface-container-highest": "#353534",
+                        "on-tertiary-fixed": "#1c1b1b",
+                        "inverse-primary": "#795900",
+                        "surface-container-high": "#2a2a2a",
+                        "on-primary": "#402d00",
+                        "tertiary-container": "#cbc9c8",
+                        "surface-container-low": "#1c1b1b",
+                        "outline-variant": "#504532",
+                        "outline": "#9c8f78",
+                        "tertiary": "#e8e5e4",
+                        "on-tertiary": "#313030",
+                        "primary-container": "#ffbf00",
+                        "surface-container": "#201f1f",
+                        "on-surface": "#e5e2e1",
+                        "on-tertiary-fixed-variant": "#474746",
+                        "on-background": "#e5e2e1",
+                        "surface-container-lowest": "#0e0e0e",
+                        "primary-fixed": "#ffdfa0",
+                        "tertiary-fixed-dim": "#c8c6c5",
+                        "on-secondary-container": "#ffb270",
+                        "secondary": "#ffb77b",
+                        "on-primary-fixed-variant": "#5c4300",
+                        "background": "#131313",
+                        "primary": "#ffe2ab",
+                        "on-secondary-fixed": "#2e1500",
+                        "surface-variant": "#353534",
+                        "on-tertiary-container": "#555454",
+                        "secondary-container": "#7a4100",
+                        "secondary-fixed": "#ffdcc2"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "32px",
+                        "container-max-width": "1280px",
+                        "section-gap": "120px",
+                        "base": "8px",
+                        "margin-desktop": "80px",
+                        "margin-mobile": "20px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Playfair Display"],
+                        "label-sm": ["Inter"],
+                        "display-lg-mobile": ["Playfair Display"],
+                        "display-lg": ["Playfair Display"],
+                        "headline-lg": ["Playfair Display"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                        "display-lg-mobile": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "display-lg": ["64px", { "lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-fill {
+            font-variation-settings: 'FILL' 1;
+        }
+        
+        /* Custom scrollbar for gallery */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md antialiased min-h-screen flex selection:bg-primary/30 selection:text-primary">
+<!-- Mobile Header (Hidden on Desktop) -->
+<header class="md:hidden fixed top-0 w-full z-50 bg-surface-container/80 backdrop-blur-xl border-b border-secondary/10 px-margin-mobile py-4 flex justify-between items-center">
+<span class="font-headline-md text-headline-md text-primary tracking-widest">SAVORA</span>
+<button class="text-secondary p-2">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+</header>
+<!-- SideNavBar (from JSON) -->
+<nav class="hidden md:flex h-screen w-64 fixed left-0 top-0 bg-surface-container dark:bg-surface-container border-r border-secondary/10 flex-col p-6 space-y-4 z-40">
+<!-- Brand / Header -->
+<div class="mb-12 mt-4 px-4">
+<h1 class="font-headline-md text-headline-md text-primary tracking-widest uppercase mb-8">Savora</h1>
+<div class="flex items-center space-x-4">
+<div class="w-12 h-12 rounded-full overflow-hidden border border-secondary/20 shadow-[0_4px_30px_rgba(184,115,51,0.15)]">
+<img alt="Customer Profile Picture" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1aMa-fE7K6wLvRNEx5QVD_ju4TEYJLoB1XE-sUGtzzjYZJjtIP8DLGuUVYBD3p4FfgRA6xmmALc3ypni__0TVLTdym-Daf0EiDmeuSP9BGfAn7V_HldAIg51H6sbzvxRYgulE01lfCOxJumK1zgqQOnfZByKZjkf36KoN3YDFw6GHfG9nJTRHyi-g5CanKCc_X8rAoXs2QP5dsYV1rs3btfDIXLph5mID4-Op04J0hDaKeGT9xxOcdeVcmujXYFWWZoc2rGVepUEf"/>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Welcome back,</p>
+<p class="font-headline-md text-headline-md text-primary">Julianne</p>
+</div>
+</div>
+</div>
+<!-- Navigation Links -->
+<div class="flex-1 space-y-2">
+<!-- Active Item: Overview -->
+<a class="flex items-center px-4 py-3 bg-secondary-container text-on-secondary-container rounded-lg font-bold font-body-md text-body-md translate-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined mr-4 icon-fill" data-icon="dashboard">dashboard</span>
+                Overview
+            </a>
+<a class="flex items-center px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-bright transition-all font-body-md text-body-md rounded-lg" href="#">
+<span class="material-symbols-outlined mr-4" data-icon="event_seat">event_seat</span>
+                Reservations
+            </a>
+<a class="flex items-center px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-bright transition-all font-body-md text-body-md rounded-lg" href="#">
+<span class="material-symbols-outlined mr-4" data-icon="receipt_long">receipt_long</span>
+                Orders
+            </a>
+<a class="flex items-center px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-bright transition-all font-body-md text-body-md rounded-lg" href="#">
+<span class="material-symbols-outlined mr-4" data-icon="settings_heart">settings_heart</span>
+                Preferences
+            </a>
+<a class="flex items-center px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-bright transition-all font-body-md text-body-md rounded-lg" href="#">
+<span class="material-symbols-outlined mr-4" data-icon="help_outline">help_outline</span>
+                Support
+            </a>
+</div>
+<!-- CTA -->
+<div class="mt-auto pt-8">
+<button class="w-full py-4 bg-primary text-on-primary font-label-sm text-label-sm uppercase tracking-widest rounded-lg hover:bg-primary-fixed transition-colors">
+                New Reservation
+            </button>
+</div>
+</nav>
+<!-- Main Canvas -->
+<main class="flex-1 w-full md:pl-64 pt-20 md:pt-0">
+<div class="max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-20 space-y-16">
+<!-- Page Header -->
+<header class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<h2 class="font-display-lg-mobile md:font-display-lg text-on-surface mb-2">Your Space</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">Curate your upcoming experiences and review your culinary journey with Savora.</p>
+</div>
+<div class="font-label-sm text-label-sm text-secondary uppercase tracking-widest px-4 py-2 border border-secondary/20 rounded-full inline-block backdrop-blur-md bg-white/5">
+                    Member since 2022
+                </div>
+</header>
+<!-- Top Grid: Loyalty & Reservation -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Loyalty Card (Glassmorphism & Tonal Layering) -->
+<div class="lg:col-span-5 relative group overflow-hidden rounded-2xl border border-[#B87333]/20 bg-surface-container-high/40 backdrop-blur-2xl p-8 shadow-[0_4px_30px_rgba(184,115,51,0.1)] transition-all duration-500 hover:shadow-[0_8px_40px_rgba(184,115,51,0.2)] hover:border-[#B87333]/40 flex flex-col justify-between min-h-[300px]">
+<!-- Abstract texture background -->
+<div class="absolute inset-0 opacity-20 mix-blend-overlay pointer-events-none" style="background-image: radial-gradient(circle at 80% 20%, rgba(255, 183, 123, 0.4) 0%, transparent 50%);"></div>
+<div class="relative z-10 flex justify-between items-start">
+<div>
+<p class="font-label-sm text-label-sm text-secondary uppercase tracking-widest mb-1">Savora Society</p>
+<h3 class="font-headline-lg text-headline-lg text-primary">Black Tier</h3>
+</div>
+<span class="material-symbols-outlined text-4xl text-primary opacity-80" data-icon="stars">stars</span>
+</div>
+<div class="relative z-10 mt-auto">
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest mb-2">Available Points</p>
+<div class="flex items-baseline gap-2">
+<span class="font-display-lg text-display-lg text-on-surface">12,450</span>
+<span class="font-body-md text-primary">pts</span>
+</div>
+<!-- Progress bar -->
+<div class="mt-6">
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant mb-2">
+<span>Current</span>
+<span>Next: Platinum (15k)</span>
+</div>
+<div class="w-full h-1 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-secondary to-primary w-[83%]"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Reservation -->
+<div class="lg:col-span-7 rounded-2xl bg-surface-container border border-white/5 p-8 flex flex-col justify-between">
+<div class="flex justify-between items-center mb-8 border-b border-white/5 pb-6">
+<h3 class="font-headline-md text-headline-md text-on-surface">Upcoming Experience</h3>
+<span class="px-3 py-1 bg-secondary-container/30 text-secondary border border-secondary/20 rounded-full font-label-sm text-label-sm uppercase tracking-widest">Confirmed</span>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest mb-1">Date</p>
+<p class="font-body-lg text-body-lg text-on-surface">Oct 24</p>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest mb-1">Time</p>
+<p class="font-body-lg text-body-lg text-on-surface">19:30</p>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest mb-1">Guests</p>
+<p class="font-body-lg text-body-lg text-on-surface">2</p>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest mb-1">Experience</p>
+<p class="font-body-lg text-body-lg text-on-surface">Tasting Menu</p>
+</div>
+</div>
+<div class="flex gap-4 mt-auto">
+<button class="flex-1 py-3 px-6 bg-white/5 backdrop-blur-md border border-[#B87333]/30 text-primary font-label-sm text-label-sm uppercase tracking-widest rounded-lg hover:border-[#B87333] hover:bg-white/10 transition-all duration-300">
+                            Modify
+                        </button>
+<button class="flex-1 py-3 px-6 bg-white/5 backdrop-blur-md border border-[#B87333]/30 text-primary font-label-sm text-label-sm uppercase tracking-widest rounded-lg hover:border-[#B87333] hover:bg-white/10 transition-all duration-300">
+                            View Menu
+                        </button>
+</div>
+</div>
+</section>
+<!-- Favorite Dishes Gallery -->
+<section class="space-y-8">
+<div class="flex justify-between items-end">
+<div>
+<h3 class="font-headline-lg text-headline-lg text-on-surface mb-2">Curated Favorites</h3>
+<p class="font-body-md text-on-surface-variant">Dishes you've loved from past visits, saved for your next reservation.</p>
+</div>
+<a class="hidden md:flex items-center text-secondary hover:text-primary transition-colors font-label-sm text-label-sm uppercase tracking-widest" href="#">
+                        View All <span class="material-symbols-outlined ml-2 text-sm" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+<!-- Bento Grid Gallery -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[300px]">
+<!-- Item 1 (Spans 2 columns on desktop) -->
+<div class="md:col-span-2 group relative overflow-hidden rounded-xl border border-white/5 cursor-pointer">
+<div class="absolute inset-0 bg-surface-dim z-0"></div>
+<img alt="A high-end culinary dish featuring perfectly seared scallops on a bed of dark, rich pureé, garnished with delicate microgreens and edible gold leaf. The lighting is moody and dramatic, typical of fine dining photography, focusing intensely on the textures of the food against a dark slate plate. The overall aesthetic is sophisticated, Michelin-star level presentation with deep blacks and vibrant organic accents." class="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:scale-105 group-hover:opacity-90 transition-all duration-700 ease-in-out z-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPkoBfJXIyc5qTMzBNpFipROSq6sV4SKTTf6weK7nGqDdBKFQT7PHMZsVTLAqqs-v6Hf2iGtWuFlWFjHeuKrRYQsQ5kkz3tGIWHU7EQpvfjLsH6rh7TZCHCebG4Vbsa6gkW8kMvtxYKjCXkixutzmnDyfffwDTn842PFBB5UrXV9cuOjSh6tEvVEIhrQve2UNHJrO_ZAcfz0GeGsGsCLy0RFgURgDg_xIoW698aSMEyo6ZnBOqMoZDklKIG3og-C29axkVU6ejw8mn"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-lowest/90 via-surface/40 to-transparent z-10"></div>
+<div class="absolute bottom-0 left-0 p-6 z-20 w-full">
+<div class="flex justify-between items-end">
+<div>
+<span class="px-2 py-1 bg-[#B87333]/20 backdrop-blur-md text-secondary border border-[#B87333]/30 rounded text-[10px] uppercase tracking-widest font-semibold mb-3 inline-block">Seafood</span>
+<h4 class="font-headline-md text-headline-md text-inverse-surface group-hover:text-primary transition-colors">Hokkaido Scallops</h4>
+<p class="font-body-sm text-on-surface-variant mt-1">Black truffle pureé, charred leek, golden caviar</p>
+</div>
+<button class="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined icon-fill text-lg" data-icon="favorite">favorite</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="group relative overflow-hidden rounded-xl border border-white/5 cursor-pointer">
+<div class="absolute inset-0 bg-surface-dim z-0"></div>
+<img alt="A premium cut of Wagyu beef steak perfectly cooked medium-rare, sliced elegantly on a dark charcoal ceramic plate. A glossy, rich demi-glace reduction pools around the meat, reflecting soft, warm, directional lighting. The background is completely dark, creating a luxurious, minimalist, and highly focused culinary presentation." class="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:scale-105 group-hover:opacity-90 transition-all duration-700 ease-in-out z-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXDEgGG95NCW2_quDQbQkHBTvxaNVBKPW3fHvd0s51SCjfH-2h4xVMe2iGUuxfuojjt0Fm5XmepYEBlEt6l3Qmxp_0vaH3qQCvFVasPkpSgoGzYtUJKtW92S1zEoQhUg8nc3Ylq1Ux_r7AClyJ0EfRhJ16OyfOIeBaA2RDsaTPcIbQxHASmtpD-LY1MowQV5T7QOz-3RQfFyvaP3L2NHsNskLfrInRIMTOmU7ZfggJYFODm4BzJOPY20tMhNodkw3o0YuIPZrT5UVF"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-lowest/90 via-surface/40 to-transparent z-10"></div>
+<div class="absolute bottom-0 left-0 p-6 z-20 w-full">
+<div class="flex justify-between items-end">
+<div>
+<h4 class="font-headline-md text-headline-md text-inverse-surface group-hover:text-primary transition-colors">A5 Wagyu Striploin</h4>
+</div>
+<button class="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined icon-fill text-lg" data-icon="favorite">favorite</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="group relative overflow-hidden rounded-xl border border-white/5 cursor-pointer">
+<div class="absolute inset-0 bg-surface-dim z-0"></div>
+<img alt="A sophisticated, avant-garde dessert featuring a delicate, abstract structure of spun sugar and dark chocolate shards over a smooth quenelle of berry sorbet. The plate is dark stone, and the lighting is moody and dramatic with sharp contrasts, highlighting the delicate textures and vibrant ruby red of the sorbet against the dark environment." class="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:scale-105 group-hover:opacity-90 transition-all duration-700 ease-in-out z-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQw7tjEtErts6Z0C-QvVahyj3K6za5C7tEk669OjV_pNy39kFK9oVG7UGDIcMJigUcKfnCivhmwDifgwC3xqWPiThsEIMMdGfs4kuLhX7pmO_5P5TPqC4O-wtlRZpLjL5aHRWlklO-pDs107H69XsWswZqbTAcARjEUTOvX0b_5qbcrB_Tvfkxz37_st-Q2-o5T_CItuKNYemF5BR7k-L-ocJO7dun-bRc3NBgoB5FtkweYka1INB6jlilACb7YEULN4QNOYyfjEMK"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-lowest/90 via-surface/40 to-transparent z-10"></div>
+<div class="absolute bottom-0 left-0 p-6 z-20 w-full">
+<div class="flex justify-between items-end">
+<div>
+<span class="px-2 py-1 bg-[#B87333]/20 backdrop-blur-md text-secondary border border-[#B87333]/30 rounded text-[10px] uppercase tracking-widest font-semibold mb-3 inline-block">Dessert</span>
+<h4 class="font-headline-md text-headline-md text-inverse-surface group-hover:text-primary transition-colors">Midnight Berry Texture</h4>
+</div>
+<button class="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined icon-fill text-lg" data-icon="favorite">favorite</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Item 4 (Spans 2 columns on desktop) -->
+<div class="md:col-span-2 group relative overflow-hidden rounded-xl border border-white/5 cursor-pointer">
+<div class="absolute inset-0 bg-surface-dim z-0"></div>
+<img alt="A minimalist fine-dining presentation of wild caught sea bass, resting in a shallow pool of vibrant green herb consommé. The dish is accented with precise dots of aromatic oil and delicate edible flowers. Photographed straight down with soft, diffused top-lighting on a matte black ceramic bowl, creating a serene, elegant, and highly composed visual." class="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:scale-105 group-hover:opacity-90 transition-all duration-700 ease-in-out z-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGdoD_UlaDoIWyMTxTDCIi-asDYq7a5hwKkooFV0wS4z9ae67c2w6K9FzWvDGgR_V5Fi00Mf3m9mVMkAGpIx1lNVkyPx6hpzWLY26wdjWVAlu2jlXpD1nhZY5AIEHCXF958grBI24qIa8geG3TBOPKSfKuDPk8WESB1eDmugZ7jm4cFTrwWlOGwV5aQFnvL8xFRUG-qm86wtHYiCnInNgCu7y6iS2EybFQ48yt8IIe7LfCpBDXtTc_yQXungMuyMOXnNkOuTfDtZNQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-lowest/90 via-surface/40 to-transparent z-10"></div>
+<div class="absolute bottom-0 left-0 p-6 z-20 w-full">
+<div class="flex justify-between items-end">
+<div>
+<h4 class="font-headline-md text-headline-md text-inverse-surface group-hover:text-primary transition-colors">Wild Sea Bass</h4>
+<p class="font-body-sm text-on-surface-variant mt-1">Dill consommé, compressed cucumber</p>
+</div>
+<button class="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined icon-fill text-lg" data-icon="favorite">favorite</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="md:hidden pt-4 flex justify-center">
+<a class="inline-flex items-center text-secondary font-label-sm text-label-sm uppercase tracking-widest border-b border-secondary/30 pb-1" href="#">
+                        View All Favorites <span class="material-symbols-outlined ml-2 text-sm" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</section>
+</div>
+</main>
+</body></html>
