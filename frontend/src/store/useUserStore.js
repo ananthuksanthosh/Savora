@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
 
 const initialUsers = [
   { id: 'user1', name: 'John Doe', email: 'john@example.com', role: 'customer', mobile: '9876543210', registered: '2026-01-15' },
@@ -6,15 +7,23 @@ const initialUsers = [
   { id: 'admin1', name: 'Restaurant Admin', email: 'admin@savora.com', role: 'admin', mobile: '9999999999', registered: '2025-12-01' }
 ];
 
-export const useUserStore = create((set) => ({
-  users: initialUsers,
-  addUser: (user) => set((state) => ({
-    users: [...state.users, { ...user, id: `u${Date.now()}`, registered: new Date().toISOString().split('T')[0] }]
-  })),
-  updateUser: (id, updates) => set((state) => ({
-    users: state.users.map(u => u.id === id ? { ...u, ...updates } : u)
-  })),
-  deleteUser: (id) => set((state) => ({
-    users: state.users.filter(u => u.id !== id)
-  }))
-}));
+export const useUserStore = create(
+  persist(
+    (set) => ({
+      users: initialUsers,
+      addUser: (user) => set((state) => ({
+        users: [...state.users, { ...user, id: `u${Date.now()}`, registered: new Date().toISOString().split('T')[0] }]
+      })),
+      updateUser: (id, updates) => set((state) => ({
+        users: state.users.map(u => u.id === id ? { ...u, ...updates } : u)
+      })),
+      deleteUser: (id) => set((state) => ({
+        users: state.users.filter(u => u.id !== id)
+      }))
+    }),
+    {
+      name: 'savora-users',
+    }
+  )
+);
+

@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
 
 const initialMenu = [
   { id: 'm1', name: 'Chicken Biryani', price: 249, category: 'Biryanis', image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?q=80&w=600&auto=format&fit=crop', available: true, description: 'Fragrant basmati rice cooked with tender chicken and aromatic spices.' },
@@ -13,16 +14,24 @@ const initialMenu = [
   { id: 'm10', name: 'Falooda', price: 119, category: 'Desserts', image: 'https://images.unsplash.com/photo-1563805042-7684c8a9e9ce?q=80&w=600&auto=format&fit=crop', available: true, description: 'Rich layered dessert with rose syrup, vermicelli, and ice cream.' },
 ];
 
-export const useMenuStore = create((set) => ({
-  menu: initialMenu,
-  categories: ['All', 'Starters', 'South Indian', 'North Indian', 'Biryanis', 'Chinese', 'Desserts', 'Beverages'],
-  addMenuItem: (item) => set((state) => ({ 
-    menu: [...state.menu, { ...item, id: `m${Date.now()}` }] 
-  })),
-  updateMenuItem: (id, updatedItem) => set((state) => ({
-    menu: state.menu.map((item) => item.id === id ? { ...item, ...updatedItem } : item)
-  })),
-  deleteMenuItem: (id) => set((state) => ({
-    menu: state.menu.filter((item) => item.id !== id)
-  })),
-}));
+export const useMenuStore = create(
+  persist(
+    (set) => ({
+      menu: initialMenu,
+      categories: ['All', 'Starters', 'South Indian', 'North Indian', 'Biryanis', 'Chinese', 'Desserts', 'Beverages'],
+      addMenuItem: (item) => set((state) => ({ 
+        menu: [...state.menu, { ...item, id: `m${Date.now()}` }] 
+      })),
+      updateMenuItem: (id, updatedItem) => set((state) => ({
+        menu: state.menu.map((item) => item.id === id ? { ...item, ...updatedItem } : item)
+      })),
+      deleteMenuItem: (id) => set((state) => ({
+        menu: state.menu.filter((item) => item.id !== id)
+      })),
+    }),
+    {
+      name: 'savora-menu',
+    }
+  )
+);
+
