@@ -168,6 +168,10 @@ export default function MenuPage() {
             </div>
             <button 
               disabled={cartItems.length === 0}
+              onClick={() => {
+                setIsCartOpen(false);
+                navigate('/checkout');
+              }}
               className="w-full bg-primary text-on-primary py-4 rounded-xl font-label-sm uppercase tracking-wider hover:bg-primary-fixed-dim transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               Proceed to Checkout

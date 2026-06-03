@@ -8,6 +8,7 @@ import LoginPage from './pages/auth/LoginPage';
 import SignupPage from './pages/auth/SignupPage';
 import CustomerDashboard from './pages/customer/CustomerDashboard';
 import ReservationPage from './pages/customer/ReservationPage';
+import CheckoutPage from './pages/CheckoutPage';
 
 import AdminDashboard from './pages/admin/AdminDashboard';
 import ManageUsers from './pages/admin/ManageUsers';
@@ -20,8 +21,34 @@ import { useAuthStore } from './store/useAuthStore';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import { useEffect, useState } from 'react';
+
 const ProtectedRoute = ({ children, requireAdmin = false }) => {
   const { isAuthenticated, isAdmin } = useAuthStore();
+  const [isHydrated, setIsHydrated] = useState(false);
+
+  useEffect(() => {
+    if (useAuthStore.persist?.hasHydrated()) {
+      setIsHydrated(true);
+    } else {
+      const unsub = useAuthStore.persist?.onFinishHydration(() => {
+        setIsHydrated(true);
+      });
+      return () => unsub?.();
+    }
+  }, []);
+
+  if (!isHydrated) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center text-primary font-body-md">
+        <div className="flex flex-col items-center gap-4">
+          <div className="w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
+          <span>Synchronizing session...</span>
+        </div>
+      </div>
+    );
+  }
+
   if (!isAuthenticated) return <Navigate to="/login" replace />;
   if (requireAdmin && !isAdmin) return <Navigate to="/" replace />;
   return children;
@@ -41,6 +68,7 @@ function App() {
           {/* Protected Customer Routes */}
           <Route path="dashboard" element={<ProtectedRoute><CustomerDashboard /></ProtectedRoute>} />
           <Route path="reserve" element={<ProtectedRoute><ReservationPage /></ProtectedRoute>} />
+          <Route path="checkout" element={<ProtectedRoute><CheckoutPage /></ProtectedRoute>} />
         </Route>
 
         {/* Admin Routes */}
